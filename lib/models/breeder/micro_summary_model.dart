@@ -1,0 +1,22 @@
+class MicroChipSummaryModel {
+  final int? id;
+  final int? breeding_count;
+  final String? chip_number;
+  final String? name;
+
+  MicroChipSummaryModel({
+    this.id,
+    this.chip_number,
+    this.breeding_count,
+    this.name,
+  });
+
+  factory MicroChipSummaryModel.fromJson(Map<String, dynamic> json) {
+    return MicroChipSummaryModel(
+      id: json['id'] ?? null,
+      chip_number: json['chip_number'] ?? null,
+      breeding_count: json['breeding_count'] ?? null,
+      name: json['name'] ?? null,
+    );
+  }
+}

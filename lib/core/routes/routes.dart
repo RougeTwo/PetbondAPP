@@ -1,0 +1,10 @@
+const String splashScreen = '/splash_screen';
+const String loginScreen = '/login_screen';
+const String signUpScreen = '/signup_screen';
+const String signUpSelectionScreen = '/signup_selection_screen';
+const String vetDashBoardScreen = '/vet_dashBoard_screen';
+const String breederDashBoardScreen = '/breeder_dashBoard_screen';
+const String charityDashBoardScreen = '/charity_dashBoard_screen';
+const String scannerScreen = '/scanner_screen';
+const String charityAdvertUpdate = '/charity_advert_update';
+const String testScreen = '/test_screen';
