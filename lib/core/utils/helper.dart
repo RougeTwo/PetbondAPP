@@ -102,7 +102,6 @@ class Helper {
       throw 'Could not launch https://dashboard.stripe.com';
   }
 
-
   static Widget priceList({
     required SizingInformationModel sizingInformation,
     List<PetModel>? list,

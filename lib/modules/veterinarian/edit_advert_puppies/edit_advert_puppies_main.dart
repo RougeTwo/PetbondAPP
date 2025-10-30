@@ -74,7 +74,7 @@ class _EditAdvertsPuppiesListMainState
   final String privacyTerms =
       "I certify that today I examined the above animal. In my opinion, the animal is in good health and is free from any physical defect or infirmity other than as listed above.";
   int _significantVale = 2;
-  TextStyle style =const TextStyle(color: ColorValues.greyTextColor);
+  TextStyle style = const TextStyle(color: ColorValues.greyTextColor);
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -168,7 +168,7 @@ class _EditAdvertsPuppiesListMainState
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const  SizedBox(
+                            const SizedBox(
                               height: 42,
                             ),
                             Material(
@@ -178,15 +178,15 @@ class _EditAdvertsPuppiesListMainState
                                     horizontal: 15, vertical: 8),
                                 child: Row(
                                   children: [
-                                const    Text(
+                                    const Text(
                                       "Veterinarian DashBoard",
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 16),
                                     ),
-                                    const   Spacer(),
+                                    const Spacer(),
                                     IconButton(
                                         onPressed: () => Navigator.pop(context),
-                                        icon:const Icon(
+                                        icon: const Icon(
                                           Icons.close,
                                           color: Colors.white,
                                           size: 25,
@@ -195,7 +195,7 @@ class _EditAdvertsPuppiesListMainState
                                 ),
                               ),
                             ),
-                            const   SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             _drawerItems(sizingInformation: sizingInformation)
@@ -230,12 +230,12 @@ class _EditAdvertsPuppiesListMainState
                         style: CustomStyles.cardTitleStyle,
                       ),
                       CustomWidgets.divider(),
-                      const   SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Text(
                         widget.puppyModel!.name.toString(),
-                        style:const TextStyle(
+                        style: const TextStyle(
                             color: ColorValues.fontColor,
                             fontSize: 18,
                             fontFamily: "FredokaOne"),
@@ -254,11 +254,11 @@ class _EditAdvertsPuppiesListMainState
       key: _formKey,
       child: Column(
         children: [
-          const   SizedBox(
+          const SizedBox(
             height: 20,
           ),
           _imageWidget(sizingInformation: sizingInformation),
-          const   SizedBox(
+          const SizedBox(
             height: 10,
           ),
           CustomWidgets.iconButton(
@@ -288,15 +288,15 @@ class _EditAdvertsPuppiesListMainState
               buttonColor: ColorValues.lighBlueButton,
               asset: AssetValues.scanIcon,
               sizingInformation: sizingInformation),
-          const    SizedBox(
+          const SizedBox(
             height: 10,
           ),
           _chipNumberTextField(sizingInformation: sizingInformation),
-          const    Text(
+          const Text(
             "If Microchip number ass uploaded please confirm number is correct above(adjust number if necessary)",
             style: TextStyle(color: ColorValues.darkerGreyColor, fontSize: 13),
           ),
-          const  SizedBox(
+          const SizedBox(
             height: 20,
           ),
           CustomRadioButton(
@@ -312,7 +312,7 @@ class _EditAdvertsPuppiesListMainState
                 });
               },
               value: _defectVale),
-          const   SizedBox(
+          const SizedBox(
             height: 20,
           ),
           _defectVale == 1
@@ -324,7 +324,7 @@ class _EditAdvertsPuppiesListMainState
                       "Please state body system and actual defect",
                       style: style,
                     ),
-                    const  SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     TextFormField(
@@ -333,9 +333,9 @@ class _EditAdvertsPuppiesListMainState
                       maxLines: 10,
                       textAlignVertical: TextAlignVertical.top,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      style:const TextStyle(
+                      style: const TextStyle(
                           fontSize: 15.0, color: ColorValues.fontColor),
-                      decoration:const InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: "Please write description here...",
                         alignLabelWithHint: true,
                         hintStyle: TextStyle(height: 0),
@@ -351,12 +351,12 @@ class _EditAdvertsPuppiesListMainState
                                 width: 1, color: ColorValues.lightGreyColor)),
                       ),
                     ),
-                    const  SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                   ],
                 )
-              :const SizedBox(),
+              : const SizedBox(),
           CustomRadioButton(
               title: "Is this clinically significant?",
               onYesTap: () {
@@ -370,7 +370,7 @@ class _EditAdvertsPuppiesListMainState
                 });
               },
               value: _significantVale),
-          const  SizedBox(
+          const SizedBox(
             height: 20,
           ),
           _significantVale == 1
@@ -382,7 +382,7 @@ class _EditAdvertsPuppiesListMainState
                       "State the significance",
                       style: style,
                     ),
-                    const  SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     TextFormField(
@@ -391,9 +391,9 @@ class _EditAdvertsPuppiesListMainState
                       maxLines: 10,
                       textAlignVertical: TextAlignVertical.top,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      style:const TextStyle(
+                      style: const TextStyle(
                           fontSize: 15.0, color: ColorValues.fontColor),
-                      decoration:const InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: "Please write description here...",
 
                         alignLabelWithHint: true,
@@ -410,20 +410,21 @@ class _EditAdvertsPuppiesListMainState
                                 width: 1, color: ColorValues.lightGreyColor)),
                       ),
                     ),
-                    const  SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                   ],
                 )
-              :const SizedBox(),
+              : const SizedBox(),
           TextFormField(
             controller: examinationNoteController,
             minLines: 4,
             maxLines: 10,
             textAlignVertical: TextAlignVertical.top,
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            style:const TextStyle(fontSize: 15.0, color: ColorValues.fontColor),
-            decoration:const InputDecoration(
+            style:
+                const TextStyle(fontSize: 15.0, color: ColorValues.fontColor),
+            decoration: const InputDecoration(
               hintText: "Examination notes...",
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -440,7 +441,7 @@ class _EditAdvertsPuppiesListMainState
                       BorderSide(width: 1, color: ColorValues.lightGreyColor)),
             ),
           ),
-          const    SizedBox(
+          const SizedBox(
             height: 10,
           ),
           FormField<bool>(
@@ -465,12 +466,12 @@ class _EditAdvertsPuppiesListMainState
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius:
-                              const BorderRadius.all(Radius.circular(6)),
+                                  const BorderRadius.all(Radius.circular(6)),
                               border: Border.all(
                                   width: 2, color: ColorValues.lightGreyColor),
                             ),
                             child: checkboxValue
-                                ?const Card(
+                                ? const Card(
                                     color: ColorValues.fontColor,
                                     child: SizedBox(
                                       height: 16,
@@ -483,7 +484,7 @@ class _EditAdvertsPuppiesListMainState
                                   ),
                           ),
                         ),
-                        const   SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Flexible(
@@ -509,11 +510,11 @@ class _EditAdvertsPuppiesListMainState
               }
             },
           ),
-          const    Divider(
+          const Divider(
             thickness: 1,
             color: ColorValues.lightGreyColor,
           ),
-          const  SizedBox(
+          const SizedBox(
             height: 10,
           ),
           FutureBuilder(
@@ -538,9 +539,7 @@ class _EditAdvertsPuppiesListMainState
                         _selectedStaff = newValue!;
                       });
                     },
-                    validator: (value) {
-
-                    },
+                    validator: (value) {},
                   ),
                 );
               }
@@ -548,7 +547,7 @@ class _EditAdvertsPuppiesListMainState
               return Container();
             },
           ),
-          const  SizedBox(
+          const SizedBox(
             height: 20,
           ),
           CustomWidgets.buttonWithoutFontFamily(
@@ -661,7 +660,7 @@ class _EditAdvertsPuppiesListMainState
               _currentImage == null)
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              physics:const BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Row(
                 children: [
                   for (File? image in _images)
@@ -710,19 +709,19 @@ class _EditAdvertsPuppiesListMainState
                 ),
               )
             : Container(
-                decoration:const BoxDecoration(
+                decoration: const BoxDecoration(
                     color: ColorValues.lighBlueButton,
                     borderRadius: BorderRadius.all(Radius.circular(6))),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      const   Text("UPLOAD VACCINATION CERTIFICATE",
+                      const Text("UPLOAD VACCINATION CERTIFICATE",
                           style: TextStyle(
                             color: ColorValues.fontColor,
                             fontWeight: FontWeight.normal,
                           )),
-                      const  Spacer(),
+                      const Spacer(),
                       SvgPicture.asset(
                         AssetValues.uploadSvg,
                         height: 15,
@@ -742,41 +741,41 @@ class _EditAdvertsPuppiesListMainState
         builder: (BuildContext modalContext) {
           return SafeArea(
               child: Wrap(
-                children: [
-                  ListTile(
-                    leading:const Icon(
-                      Icons.photo_library,
-                    ),
-                    title:const Text(
-                      'Gallery',
-                      style: TextStyle(
-                        fontFamily: "FredokaOne",
-                      ),
-                    ),
-                    onTap: () {
-                      _getFile(
-                        ImageSource.gallery,
-                      );
-                      Navigator.pop(context);
-                    },
+            children: [
+              ListTile(
+                leading: const Icon(
+                  Icons.photo_library,
+                ),
+                title: const Text(
+                  'Gallery',
+                  style: TextStyle(
+                    fontFamily: "FredokaOne",
                   ),
-                  ListTile(
-                    leading:const Icon(
-                      Icons.photo_camera,
-                    ),
-                    title:const Text(
-                      'Camera',
-                      style: TextStyle(
-                        fontFamily: "FredokaOne",
-                      ),
-                    ),
-                    onTap: () {
-                      _getFile(ImageSource.camera);
-                      Navigator.pop(context);
-                    },
+                ),
+                onTap: () {
+                  _getFile(
+                    ImageSource.gallery,
+                  );
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.photo_camera,
+                ),
+                title: const Text(
+                  'Camera',
+                  style: TextStyle(
+                    fontFamily: "FredokaOne",
                   ),
-                ],
-              ));
+                ),
+                onTap: () {
+                  _getFile(ImageSource.camera);
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ));
         });
   }
 
@@ -917,10 +916,10 @@ class _EditAdvertsPuppiesListMainState
                 decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(4)),
-                child:const Align(
+                child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       "Logout",
                       style: TextStyle(color: Colors.white),

@@ -38,7 +38,7 @@ class Api {
       'update_puppy_chip_no': 'breeder/advert/',
       'breeder_list_messages': 'breeder/messages/adverts',
       'breeder_list_advert_messages':
-      'breeder/messages/:advert_id/advert-buyers',
+          'breeder/messages/:advert_id/advert-buyers',
       'breeder_unread_messages_count': 'breeder/messages/unread-messages-count',
       'breeder_view_chat': 'breeder/messages/:chat_id/advert-conversation',
       'breeder_send_message': 'breeder/messages/:chat_id/send-message',
@@ -72,7 +72,7 @@ class Api {
       'update_charity_location': 'charity/profile/update-location',
       'charity_list_messages': 'charity/messages/adverts',
       'charity_list_advert_messages':
-      'charity/messages/:advert_id/advert-buyers',
+          'charity/messages/:advert_id/advert-buyers',
       'charity_unread_messages_count': 'charity/messages/unread-messages-count',
       'charity_view_chat': 'charity/messages/:chat_id/advert-conversation',
       'charity_send_message': 'charity/messages/:chat_id/send-message',

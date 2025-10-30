@@ -16,7 +16,8 @@ class HttpRequest {
     var headers = await this._setHeaders();
     final response = await http.get(url, headers: headers);
     return response.body.isNotEmpty
-        ? ResponseModel.fromJson(response.statusCode, json.decode(response.body))
+        ? ResponseModel.fromJson(
+            response.statusCode, json.decode(response.body))
         : ResponseModel(
             statusCode: 400, message: 'Request response malformed!');
   }
@@ -26,26 +27,31 @@ class HttpRequest {
     var headers = await this._setHeaders(contentType: contentType);
     final response = await http.post(url, body: body, headers: headers);
     return response.body.isNotEmpty
-        ? ResponseModel.fromJson(response.statusCode, json.decode(response.body))
+        ? ResponseModel.fromJson(
+            response.statusCode, json.decode(response.body))
         : ResponseModel(
             statusCode: 400, message: 'Request response malformed!');
   }
+
   Future<ResponseModel> put(Uri url, Map<String, dynamic> body) async {
     var headers = await this._setHeaders();
     final response = await http.put(url, body: body, headers: headers);
-    return ResponseModel.fromJson(response.statusCode, json.decode(response.body));
+    return ResponseModel.fromJson(
+        response.statusCode, json.decode(response.body));
   }
 
   Future<ResponseModel> delete(Uri url, Map<String, dynamic> body) async {
     var headers = await this._setHeaders();
     final response = await http.delete(url, body: body, headers: headers);
-    return ResponseModel.fromJson(response.statusCode, json.decode(response.body));
+    return ResponseModel.fromJson(
+        response.statusCode, json.decode(response.body));
   }
 
   Future<ResponseModel> patch(Uri url, Map<String, dynamic> body) async {
     var headers = await this._setHeaders();
     final response = await http.patch(url, body: body, headers: headers);
-    return ResponseModel.fromJson(response.statusCode, json.decode(response.body));
+    return ResponseModel.fromJson(
+        response.statusCode, json.decode(response.body));
   }
 
   _setHeaders({contentType: 'json'}) async {

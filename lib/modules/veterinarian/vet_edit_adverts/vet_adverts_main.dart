@@ -322,7 +322,7 @@ class _VetEditAdvertsMainState extends State<VetEditAdvertsMain> {
                 decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(4)),
-                child:const Align(
+                child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),

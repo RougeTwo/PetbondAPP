@@ -158,7 +158,7 @@ class _VetDashBoardScreenState extends State<VetDashBoardScreen> {
                   MaterialPageRoute(builder: (context) => VetSettings()));
             },
             buttonColor: Colors.white.withOpacity(0.25),
-             btnLable: "Settings"),
+            btnLable: "Settings"),
         InkWell(
             onTap: () {
               authServices.logout(context: context);

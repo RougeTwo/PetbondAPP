@@ -6,7 +6,6 @@ import 'package:petbond_uk/core/utils/response_model.dart';
 import 'package:petbond_uk/modules/createStripe/webview_stripe.dart';
 
 class ConnectServices extends BaseService {
-
   //-----------CREATE STRIPE ACCOUNT--------------------
   createStripeAccount({required BuildContext context}) async {
     method = 'post';
@@ -20,7 +19,6 @@ class ConnectServices extends BaseService {
           MaterialPageRoute(
               builder: (context) =>
                   WebViewScreen(url: _responseModel.body['url'])));
-
     }
   }
 

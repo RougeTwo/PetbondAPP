@@ -27,7 +27,6 @@ class _CharityDashBoardScreenState extends State<CharityDashBoardScreen> {
   SecureStorage secureStorage = SecureStorage();
   AuthServices authServices = AuthServices();
 
-
   @override
   Widget build(BuildContext context) {
     return BaseWidget(

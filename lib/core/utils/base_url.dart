@@ -1,5 +1,6 @@
 class BaseUrl {
-  static const String _baseUrl = 'https://staging-api.petbond.co.uk/api/mobile/';
+  static const String _baseUrl =
+      'https://staging-api.petbond.co.uk/api/mobile/';
   static const String _imageUrl =
       'https://staging-api.petbond.co.uk/api/image-retrieve/';
   static const String _stripeChannelAuthUrl =

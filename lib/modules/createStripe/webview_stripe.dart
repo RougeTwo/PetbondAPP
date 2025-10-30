@@ -32,7 +32,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
           },
           initialUrl: widget.url,
           onPageFinished: (String url) {
-            if (url.contains("https://staging.petbond.co.uk/onboarding-process")) {
+            if (url
+                .contains("https://staging.petbond.co.uk/onboarding-process")) {
               Navigator.pop(context);
               Future.delayed(Duration(seconds: 1), () {
                 connectServices.checkOnBoard(context: context);

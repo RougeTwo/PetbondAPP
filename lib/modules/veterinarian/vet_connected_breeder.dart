@@ -207,7 +207,7 @@ class _VetConnectedBreedersState extends State<VetConnectedBreeders> {
                                 setState(() {
                                   getConnected = veterinarianServices
                                       .getStreamConnectedBreederList(
-                                      context: context);
+                                          context: context);
 
                                   EasyLoading.showSuccess(
                                       "Connection Deleted Successfully!");
@@ -253,7 +253,7 @@ class _VetConnectedBreedersState extends State<VetConnectedBreeders> {
                             setState(() {
                               getConnected = veterinarianServices
                                   .getStreamConnectedBreederList(
-                                  context: context);
+                                      context: context);
                             });
                           });
                         }
@@ -306,20 +306,20 @@ class _VetConnectedBreedersState extends State<VetConnectedBreeders> {
                                 CustomWidgets.buttonWithoutFontFamily(
                                     text: "Remove",
                                     widthSizedBox:
-                                    sizingInformation.screenWidth / 2.5,
+                                        sizingInformation.screenWidth / 2.5,
                                     onPressed: () {
                                       setState(() {
                                         veterinarianServices
                                             .deleteConnection(
-                                            breeder_id:
-                                            connectedBreederList[index]
-                                                .id,
-                                            context: context)
+                                                breeder_id:
+                                                    connectedBreederList[index]
+                                                        .id,
+                                                context: context)
                                             .then((value) {
                                           setState(() {
                                             getConnected = veterinarianServices
                                                 .getStreamConnectedBreederList(
-                                                context: context);
+                                                    context: context);
                                             EasyLoading.showSuccess(
                                                 "Connection Deleted Successfully!");
                                           });

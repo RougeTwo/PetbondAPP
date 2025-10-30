@@ -136,11 +136,11 @@ class _AuthorizedHeaderState extends State<AuthorizedHeader> {
                                     context: context,
                                     barrierDismissible: true,
                                     barrierLabel:
-                                    MaterialLocalizations.of(context)
-                                        .modalBarrierDismissLabel,
+                                        MaterialLocalizations.of(context)
+                                            .modalBarrierDismissLabel,
                                     barrierColor: Colors.black45,
                                     transitionDuration:
-                                    const Duration(milliseconds: 200),
+                                        const Duration(milliseconds: 200),
                                     pageBuilder: (BuildContext buildContext,
                                         Animation animation,
                                         Animation secondaryAnimation) {
@@ -152,16 +152,16 @@ class _AuthorizedHeaderState extends State<AuthorizedHeader> {
                                                 if (snapshot.hasData) {
                                                   return Container(
                                                     height: widget
-                                                        .sizingInformation
-                                                        .safeBlockHorizontal *
+                                                            .sizingInformation
+                                                            .safeBlockHorizontal *
                                                         80,
                                                     width: widget
-                                                        .sizingInformation
-                                                        .safeBlockHorizontal *
+                                                            .sizingInformation
+                                                            .safeBlockHorizontal *
                                                         80,
                                                     padding:
-                                                    const EdgeInsets.all(
-                                                        20),
+                                                        const EdgeInsets.all(
+                                                            20),
                                                     color: Colors.white,
                                                     child: Column(
                                                       children: [
@@ -173,12 +173,12 @@ class _AuthorizedHeaderState extends State<AuthorizedHeader> {
                                                               snapshot.data
                                                                   .toString(),
                                                           width: widget
-                                                              .sizingInformation
-                                                              .safeBlockHorizontal *
+                                                                  .sizingInformation
+                                                                  .safeBlockHorizontal *
                                                               40,
                                                           height: widget
-                                                              .sizingInformation
-                                                              .safeBlockHorizontal *
+                                                                  .sizingInformation
+                                                                  .safeBlockHorizontal *
                                                               40,
                                                         ),
                                                         SizedBox(
@@ -187,7 +187,7 @@ class _AuthorizedHeaderState extends State<AuthorizedHeader> {
                                                         Text(
                                                           "This QR code is used to connect your Petbond account to a Vet practice enrolled with Petbond, this will allow your Vet to upload and verify puppies in your adverts.",
                                                           textAlign:
-                                                          TextAlign.center,
+                                                              TextAlign.center,
                                                           style: TextStyle(
                                                             fontSize: 12,
                                                           ),
@@ -274,19 +274,19 @@ class _AuthorizedHeaderState extends State<AuthorizedHeader> {
                   }),
             widget.showCardWidget == false
                 ? Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-              child: Card(
-                //  color: Colors.white10,
-                  shadowColor: Colors.black,
-                  elevation: 20,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  //  / clipBehavior: Clip.none,
-                  child: SingleChildScrollView(
-                    child: widget.widget,
-                  )),
-            )
+                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                    child: Card(
+                        //  color: Colors.white10,
+                        shadowColor: Colors.black,
+                        elevation: 20,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        //  / clipBehavior: Clip.none,
+                        child: SingleChildScrollView(
+                          child: widget.widget,
+                        )),
+                  )
                 : widget.widget,
             const SizedBox(
               height: 25,

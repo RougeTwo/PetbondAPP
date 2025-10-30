@@ -64,7 +64,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               child: Column(
                 children: [
                   SizedBox(height: sizingInformation.safeBlockHorizontal * 4),
-                  const  Text(
+                  const Text(
                     "Forgot Your Password?",
                     style: TextStyle(
                         color: ColorValues.fontColor,
@@ -73,7 +73,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         fontFamily: 'FredokaOne'),
                   ),
                   SizedBox(height: sizingInformation.safeBlockHorizontal * 4),
-                  const   Text(
+                  const Text(
                     "Enter you email address and we will send you password reset email.",
                     style: CustomStyles.textStyle,
                   ),

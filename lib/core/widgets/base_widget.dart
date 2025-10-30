@@ -7,7 +7,7 @@ class BaseWidget extends StatelessWidget {
   final Widget Function(
       BuildContext context, SizingInformationModel sizingInformation) builder;
 
-  const  BaseWidget({Key? key, required this.builder}) : super(key: key);
+  const BaseWidget({Key? key, required this.builder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,8 @@ class BaseWidget extends StatelessWidget {
         safeAreaVertical: _safeAreaVertical,
         safeBlockHorizontal: _safeBlockHorizontal,
         safeBlockVertical: _safeBlockVertical,
-        fontSize: fontSizeValues, currentBoxSize: null,
+        fontSize: fontSizeValues,
+        currentBoxSize: null,
       );
       return builder(context, sizingInformation);
     });

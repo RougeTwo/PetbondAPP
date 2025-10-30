@@ -47,8 +47,8 @@ class _VetSettingsState extends State<VetSettings> {
   Future? getStaffList;
 
   final deleteAccountFormKey = GlobalKey<FormState>();
-  TextEditingController deleteAccountOldPasswordController = TextEditingController();
-
+  TextEditingController deleteAccountOldPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _VetSettingsState extends State<VetSettings> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const    SizedBox(
+                            const SizedBox(
                               height: 42,
                             ),
                             Material(
@@ -80,15 +80,15 @@ class _VetSettingsState extends State<VetSettings> {
                                     horizontal: 15, vertical: 8),
                                 child: Row(
                                   children: [
-                                    const    Text(
+                                    const Text(
                                       "Veterinarian DashBoard",
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 16),
                                     ),
-                                    const  Spacer(),
+                                    const Spacer(),
                                     IconButton(
                                         onPressed: () => Navigator.pop(context),
-                                        icon:const Icon(
+                                        icon: const Icon(
                                           Icons.close,
                                           color: Colors.white,
                                           size: 25,
@@ -97,7 +97,7 @@ class _VetSettingsState extends State<VetSettings> {
                                 ),
                               ),
                             ),
-                            const  SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             _drawerItems(sizingInformation: sizingInformation)
@@ -466,117 +466,135 @@ class _VetSettingsState extends State<VetSettings> {
         barrierDismissible: false,
         context: context,
         builder: (context) => StatefulBuilder(builder: (context, setState) {
-          return Dialog(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)), //this right here
-            child: Container(
-              height: MediaQuery.of(context).size.height / 2,
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Align(
-                        alignment: Alignment.topRight,
-                        child: IconButton(
-                          icon: Icon(Icons.close),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        )),
-                    const Text(
-                      'Warning!!!',
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const Flexible(
-                      child: Text(
-                        'Proceeding this action will permanently delete your account. \n\nTo continue please enter your password.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 16,
+              return Dialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(20.0)), //this right here
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 2,
+                  width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                            alignment: Alignment.topRight,
+                            child: IconButton(
+                              icon: Icon(Icons.close),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            )),
+                        const Text(
+                          'Warning!!!',
+                          softWrap: true,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 12),
-                      child: Container(
-                        child: Form(
-                          key: deleteAccountFormKey,
-                          child: TextFormField(
-                            controller: deleteAccountOldPasswordController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            style: TextStyle(fontSize: 15.0, color: ColorValues.fontColor),
-                            obscureText: visibleOldPassword,
-                            decoration: InputDecoration(
-                              suffixIcon: GestureDetector(
-                                onTap: () => setState(() => visibleOldPassword = !visibleOldPassword),
-                                child: visibleOldPassword
-                                    ? const Icon(
-                                  Icons.visibility_off,
-                                  color: ColorValues.lightGreyColor,
-                                )
-                                    : Icon(Icons.visibility, color: ColorValues.fontColor),
-                              ),
-                              focusedBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(8)),
-                                borderSide: BorderSide(color: ColorValues.fontColor, width: 2.0),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(8)),
-                                borderSide:
-                                BorderSide(color: ColorValues.lightGreyColor, width: 2.0),
-                              ),
-                              contentPadding: EdgeInsets.all(8),
-                              hintText: 'Current Password',
-                              labelStyle: TextStyle(color: ColorValues.darkerGreyColor),
-                              labelText: 'Current Password',
-                              border: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                                  borderSide: BorderSide(width: 1, color: Colors.black)),
+                        const Flexible(
+                          child: Text(
+                            'Proceeding this action will permanently delete your account. \n\nTo continue please enter your password.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 16,
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        if (deleteAccountOldPasswordController.text.isNotEmpty) {
-                          _appServices.deleteAccount(
-                              context: context,
-                              password: deleteAccountOldPasswordController.text
-                          );
-                          return ;
-                        }
-
-                        EasyLoading.showError('Please enter your password.');
-                      },
-                      child: Container(
-                        width: 80,
-                        height: 40,
-                        decoration: const BoxDecoration(
-                            color: ColorValues.loginBackground,
-                            borderRadius: BorderRadius.all(Radius.circular(12))),
-                        child: const Center(
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(color: Colors.white),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 12),
+                          child: Container(
+                            child: Form(
+                              key: deleteAccountFormKey,
+                              child: TextFormField(
+                                controller: deleteAccountOldPasswordController,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                style: TextStyle(
+                                    fontSize: 15.0,
+                                    color: ColorValues.fontColor),
+                                obscureText: visibleOldPassword,
+                                decoration: InputDecoration(
+                                  suffixIcon: GestureDetector(
+                                    onTap: () => setState(() =>
+                                        visibleOldPassword =
+                                            !visibleOldPassword),
+                                    child: visibleOldPassword
+                                        ? const Icon(
+                                            Icons.visibility_off,
+                                            color: ColorValues.lightGreyColor,
+                                          )
+                                        : Icon(Icons.visibility,
+                                            color: ColorValues.fontColor),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    borderSide: BorderSide(
+                                        color: ColorValues.fontColor,
+                                        width: 2.0),
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    borderSide: BorderSide(
+                                        color: ColorValues.lightGreyColor,
+                                        width: 2.0),
+                                  ),
+                                  contentPadding: EdgeInsets.all(8),
+                                  hintText: 'Current Password',
+                                  labelStyle: TextStyle(
+                                      color: ColorValues.darkerGreyColor),
+                                  labelText: 'Current Password',
+                                  border: const OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8)),
+                                      borderSide: BorderSide(
+                                          width: 1, color: Colors.black)),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        GestureDetector(
+                          onTap: () {
+                            if (deleteAccountOldPasswordController
+                                .text.isNotEmpty) {
+                              _appServices.deleteAccount(
+                                  context: context,
+                                  password:
+                                      deleteAccountOldPasswordController.text);
+                              return;
+                            }
+
+                            EasyLoading.showError(
+                                'Please enter your password.');
+                          },
+                          child: Container(
+                            width: 80,
+                            height: 40,
+                            decoration: const BoxDecoration(
+                                color: ColorValues.loginBackground,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12))),
+                            child: const Center(
+                              child: Text(
+                                "Submit",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          );
-        }));
+              );
+            }));
   }
 }

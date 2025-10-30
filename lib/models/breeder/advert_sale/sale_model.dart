@@ -1,4 +1,3 @@
-
 import 'package:petbond_uk/models/breeder/advert/pet.dart';
 import 'package:petbond_uk/models/breeder/advert_sale/sale_pet_model.dart';
 
@@ -28,12 +27,14 @@ class AdvertSale {
       pet: json.containsKey('pet') && json['pet'] != null
           ? SalePetModel.fromJson(json['pet'])
           : null,
-      total_transactions_price: json.containsKey('total_transactions_price') && json['total_transactions_price'] != null
-        ? TransactionModel.fromJson(json['total_transactions_price'])
-        : null,
+      total_transactions_price: json.containsKey('total_transactions_price') &&
+              json['total_transactions_price'] != null
+          ? TransactionModel.fromJson(json['total_transactions_price'])
+          : null,
     );
   }
 }
+
 class TransactionModel {
   final int? order_id;
   final dynamic? total_amount;

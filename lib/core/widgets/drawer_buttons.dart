@@ -51,41 +51,41 @@ class DrawerButton extends StatelessWidget {
         ),
         showMessageCounter
             ? FutureBuilder(
-            future: chatService.unreadMessagesCount(
-              context: context,
-              role: role,
-            ),
-            builder: (context, AsyncSnapshot snapshot) {
-              if (!snapshot.hasData) {
-                return const SizedBox();
-              } else {
-                messageCounter = snapshot.data;
-                return messageCounter > 0
-                    ? Positioned(
-                  right: 30,
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: const BoxDecoration(
-                      color: ColorValues.counterContainerColor,
-                      shape: BoxShape.circle,
-                    ),
-                    height: 28,
-                    width: 28,
-                    alignment: Alignment.center,
-                    child: Text(
-                      messageCounter > 99
-                          ? '+99'
-                          : messageCounter.toString(),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 11,
-                      ),
-                    ),
-                  ),
-                )
-                    : const SizedBox();
-              }
-            })
+                future: chatService.unreadMessagesCount(
+                  context: context,
+                  role: role,
+                ),
+                builder: (context, AsyncSnapshot snapshot) {
+                  if (!snapshot.hasData) {
+                    return const SizedBox();
+                  } else {
+                    messageCounter = snapshot.data;
+                    return messageCounter > 0
+                        ? Positioned(
+                            right: 30,
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: const BoxDecoration(
+                                color: ColorValues.counterContainerColor,
+                                shape: BoxShape.circle,
+                              ),
+                              height: 28,
+                              width: 28,
+                              alignment: Alignment.center,
+                              child: Text(
+                                messageCounter > 99
+                                    ? '+99'
+                                    : messageCounter.toString(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ),
+                          )
+                        : const SizedBox();
+                  }
+                })
             : const SizedBox(),
       ],
     );

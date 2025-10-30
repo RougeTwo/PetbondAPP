@@ -136,7 +136,7 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                         child: GestureDetector(
                           onTap: () {},
                           child: Card(
-                            //  color: Colors.white10,
+                              //  color: Colors.white10,
                               shadowColor: Colors.black,
                               elevation: 20,
                               shape: RoundedRectangleBorder(
@@ -164,24 +164,24 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: isLoaded
           ? Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _pageViewBuilder(sizingInformation: sizingInformation),
-          _buttonContainer(sizingInformation: sizingInformation),
-          const SizedBox(
-            height: 20,
-          ),
-          _breederCharacteristics(sizingInformation: sizingInformation),
-          if (advertDetailViewModel.mother_examinations!.isNotEmpty)
-            _petBondHealthCheck(sizingInformation: sizingInformation),
-          _breederInformation(sizingInformation: sizingInformation),
-          const SizedBox(
-            height: 30,
-          ),
-        ],
-      )
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _pageViewBuilder(sizingInformation: sizingInformation),
+                _buttonContainer(sizingInformation: sizingInformation),
+                const SizedBox(
+                  height: 20,
+                ),
+                _breederCharacteristics(sizingInformation: sizingInformation),
+                if (advertDetailViewModel.mother_examinations!.isNotEmpty)
+                  _petBondHealthCheck(sizingInformation: sizingInformation),
+                _breederInformation(sizingInformation: sizingInformation),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )
           : CustomWidgets.box(
-          sizingInformation: sizingInformation, txt: "No Data Found"),
+              sizingInformation: sizingInformation, txt: "No Data Found"),
     );
   }
 
@@ -201,10 +201,10 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
             controller: _controller,
             children: advertDetailViewModel.pets!
                 .map((e) => petPageViewBuilder(
-                e,
-                advertDetailViewModel.pets?.length,
-                index,
-                sizingInformation))
+                    e,
+                    advertDetailViewModel.pets?.length,
+                    index,
+                    sizingInformation))
                 .toList(),
           );
         },
@@ -260,7 +260,7 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                 advertDetailViewModel.description!,
                 overflow: TextOverflow.ellipsis,
                 style:
-                TextStyle(color: ColorValues.darkerGreyColor, fontSize: 16),
+                    TextStyle(color: ColorValues.darkerGreyColor, fontSize: 16),
               ),
             ),
           const SizedBox(
@@ -376,8 +376,8 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
               petModel.chip_number!.contains(RegExp(r'[a-z]'))
                   ? const SizedBox()
                   : _textWithLabel(
-                  lable: "Microchip No:",
-                  value: petModel.chip_number.toString()),
+                      lable: "Microchip No:",
+                      value: petModel.chip_number.toString()),
               if (advertDetailViewModel.user!.reg_number != null)
                 _textWithLabel(
                     lable: "Dept Agriculture:",
@@ -469,26 +469,26 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                           alignment: Alignment.centerRight,
                           child: showSize
                               ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                showSize = false;
-                              });
-                            },
-                            child: const Icon(
-                              Icons.minimize,
-                              color: ColorValues.fontColor,
-                            ),
-                          )
+                                  onTap: () {
+                                    setState(() {
+                                      showSize = false;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.minimize,
+                                    color: ColorValues.fontColor,
+                                  ),
+                                )
                               : GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  showSize = true;
-                                });
-                              },
-                              child: const Icon(
-                                Icons.add_circle_outline,
-                                color: ColorValues.fontColor,
-                              )),
+                                  onTap: () {
+                                    setState(() {
+                                      showSize = true;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.add_circle_outline,
+                                    color: ColorValues.fontColor,
+                                  )),
                         ),
                       )
                     ],
@@ -515,26 +515,26 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                           alignment: Alignment.centerRight,
                           child: showEnergy
                               ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                showEnergy = false;
-                              });
-                            },
-                            child: const Icon(
-                              Icons.minimize,
-                              color: ColorValues.fontColor,
-                            ),
-                          )
+                                  onTap: () {
+                                    setState(() {
+                                      showEnergy = false;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.minimize,
+                                    color: ColorValues.fontColor,
+                                  ),
+                                )
                               : GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  showEnergy = true;
-                                });
-                              },
-                              child: const Icon(
-                                Icons.add_circle_outline,
-                                color: ColorValues.fontColor,
-                              )),
+                                  onTap: () {
+                                    setState(() {
+                                      showEnergy = true;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.add_circle_outline,
+                                    color: ColorValues.fontColor,
+                                  )),
                         ),
                       )
                     ],
@@ -561,26 +561,26 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                           alignment: Alignment.centerRight,
                           child: showLifeSpan
                               ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                showLifeSpan = false;
-                              });
-                            },
-                            child: const Icon(
-                              Icons.minimize,
-                              color: ColorValues.fontColor,
-                            ),
-                          )
+                                  onTap: () {
+                                    setState(() {
+                                      showLifeSpan = false;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.minimize,
+                                    color: ColorValues.fontColor,
+                                  ),
+                                )
                               : GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  showLifeSpan = true;
-                                });
-                              },
-                              child: const Icon(
-                                Icons.add_circle_outline,
-                                color: ColorValues.fontColor,
-                              )),
+                                  onTap: () {
+                                    setState(() {
+                                      showLifeSpan = true;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.add_circle_outline,
+                                    color: ColorValues.fontColor,
+                                  )),
                         ),
                       )
                     ],
@@ -607,26 +607,26 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                           alignment: Alignment.centerRight,
                           child: showGrooming
                               ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                showGrooming = false;
-                              });
-                            },
-                            child: const Icon(
-                              Icons.minimize,
-                              color: ColorValues.fontColor,
-                            ),
-                          )
+                                  onTap: () {
+                                    setState(() {
+                                      showGrooming = false;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.minimize,
+                                    color: ColorValues.fontColor,
+                                  ),
+                                )
                               : GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  showGrooming = true;
-                                });
-                              },
-                              child: const Icon(
-                                Icons.add_circle_outline,
-                                color: ColorValues.fontColor,
-                              )),
+                                  onTap: () {
+                                    setState(() {
+                                      showGrooming = true;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.add_circle_outline,
+                                    color: ColorValues.fontColor,
+                                  )),
                         ),
                       )
                     ],
@@ -653,26 +653,26 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                           alignment: Alignment.centerRight,
                           child: showLivingSpace
                               ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                showLivingSpace = false;
-                              });
-                            },
-                            child: const Icon(
-                              Icons.minimize,
-                              color: ColorValues.fontColor,
-                            ),
-                          )
+                                  onTap: () {
+                                    setState(() {
+                                      showLivingSpace = false;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.minimize,
+                                    color: ColorValues.fontColor,
+                                  ),
+                                )
                               : GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  showLivingSpace = true;
-                                });
-                              },
-                              child: const Icon(
-                                Icons.add_circle_outline,
-                                color: ColorValues.fontColor,
-                              )),
+                                  onTap: () {
+                                    setState(() {
+                                      showLivingSpace = true;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.add_circle_outline,
+                                    color: ColorValues.fontColor,
+                                  )),
                         ),
                       )
                     ],
@@ -760,12 +760,12 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
             child: RichText(
               text: TextSpan(
                   text:
-                  'This health check was performed by a Petbond Recommended Veterinarian practice: ',
+                      'This health check was performed by a Petbond Recommended Veterinarian practice: ',
                   style: const TextStyle(color: ColorValues.fontColor),
                   children: <TextSpan>[
                     TextSpan(
                         text:
-                        "${advertDetailViewModel.pets![0].pet_verified_by}",
+                            "${advertDetailViewModel.pets![0].pet_verified_by}",
                         style: const TextStyle(
                             color: ColorValues.fontColor,
                             fontWeight: FontWeight.bold))
@@ -841,9 +841,9 @@ class _AdvertDetailViewScreenState extends State<AdvertDetailViewScreen> {
                         ),
                         Flexible(
                             child: Text(
-                              "Vet Approved Breeder",
-                              style: style,
-                            ))
+                          "Vet Approved Breeder",
+                          style: style,
+                        ))
                       ],
                     ),
                   Row(
