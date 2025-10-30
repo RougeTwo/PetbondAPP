@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petbond_uk/core/utils/sizing_information_model.dart';
 import 'package:petbond_uk/core/widgets/custom_loader.dart';

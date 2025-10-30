@@ -17,7 +17,6 @@ import 'package:petbond_uk/services/auth/auth_services.dart';
 import 'package:petbond_uk/services/shared/shared_services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 
 class SignUpScreen extends StatefulWidget {

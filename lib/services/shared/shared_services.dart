@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:petbond_uk/core/services/base_services.dart';
 import 'package:petbond_uk/core/utils/response_model.dart';
 import 'package:petbond_uk/models/advert_model/advert_detail_model.dart';
