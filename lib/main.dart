@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:petbond_uk/core/routes/routes_generator.dart';
-import 'package:flutter/foundation.dart';
 import 'package:petbond_uk/core/values/color_values.dart';
 import 'core/routes/routes.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter/cupertino.dart';
 
 const kGoogleApiKey = "API_KEY";
 
