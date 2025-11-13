@@ -11,7 +11,7 @@ import 'package:petbond_uk/core/widgets/custom_widgets.dart';
 import 'package:petbond_uk/models/breeder/edit_advert/edit_advert_pets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:io';
+import 'package:petbond_uk/core/utils/file_universal.dart';
 
 import '../../../../models/shared/sale_commission_tax_model.dart';
 import '../../../../services/breeder/breeder_services.dart';

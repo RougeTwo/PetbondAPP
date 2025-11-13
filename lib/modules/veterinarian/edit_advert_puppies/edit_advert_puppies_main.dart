@@ -24,7 +24,7 @@ import 'package:petbond_uk/modules/veterinarian/vet_profile.dart';
 import 'package:petbond_uk/modules/veterinarian/vet_setting.dart';
 import 'package:petbond_uk/core/widgets/shared/header.dart';
 import 'package:petbond_uk/services/veterinarian/vet_services.dart';
-import 'dart:io';
+import 'package:petbond_uk/core/utils/file_universal.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:developer';
