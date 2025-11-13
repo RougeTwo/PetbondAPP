@@ -1,6 +1,7 @@
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:petbond_uk/core/utils/file_compat.dart';
 import 'package:petbond_uk/core/utils/sizing_information_model.dart';
 import 'package:petbond_uk/core/widgets/custom_loader.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -51,11 +52,13 @@ class Helper {
       );
 
   static Future<File?> imagePicker({required ImageSource imageSource}) async {
-    ImagePicker imagePicker = ImagePicker();
-    // ignore: deprecated_member_use
-    PickedFile? pickedFile = await imagePicker.getImage(source: imageSource);
-    if (pickedFile == null) return null;
-    return File(pickedFile.path);
+    final ImagePicker picker = ImagePicker();
+    final XFile? x = await picker.pickImage(source: imageSource);
+    if (x == null) return null;
+    if (kIsWeb) {
+      return null;
+    }
+    return File(x.path);
   }
 
   static void launchURL() async {
