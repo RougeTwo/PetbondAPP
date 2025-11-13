@@ -39,6 +39,7 @@ class _VetBreederRegistrationState extends State<VetBreederRegistration> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -117,7 +118,9 @@ class _VetBreederRegistrationState extends State<VetBreederRegistration> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 40),
       child: Form(
         key: _formKey,
-        child: Column(
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
@@ -157,6 +160,7 @@ class _VetBreederRegistrationState extends State<VetBreederRegistration> {
           ],
         ),
       ),
+    ),
     );
   }
 
