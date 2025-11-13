@@ -693,56 +693,56 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
             ),
           if (motherHealth == 1)
             showExaminationData
-                ? GridView.builder(
-                    physics: const ScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              String id = examinationList![index].id.toString();
-                              if (motherExaminations.contains(id)) {
+                ? Builder(builder: (context) {
+                    final exams = examinationList ?? const <ExaminationModel>[];
+                    return GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (BuildContext context, int index) {
+                        final exam = exams[index];
+                        final examId = exam.id.toString();
+                        final name = exam.name;
+                        final displayName = name.isNotEmpty
+                            ? "${name[0].toUpperCase()}${name.substring(1).toLowerCase()}"
+                            : "";
+                        final selected = motherExaminations.contains(examId);
+                        return Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
                                 setState(() {
-                                  motherExaminations.remove(id);
+                                  if (selected) {
+                                    motherExaminations.remove(examId);
+                                  } else {
+                                    motherExaminations.add(examId);
+                                  }
                                 });
-                              } else {
-                                setState(() {
-                                  motherExaminations.add(id);
-                                });
-                              }
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(6)),
-                                border: Border.all(
-                                    width: 2,
-                                    color: ColorValues.lightGreyColor),
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(6)),
+                                  border: Border.all(
+                                      width: 2,
+                                      color: ColorValues.lightGreyColor),
+                                ),
+                                child: selected
+                                    ? CustomWidgets.checkedBox()
+                                    : CustomWidgets.unCheckedBox(),
                               ),
-                              child: motherExaminations.contains(
-                                          examinationList![index]
-                                              .id
-                                              .toString()) ==
-                                      true
-                                  ? CustomWidgets.checkedBox()
-                                  : CustomWidgets.unCheckedBox(),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          // Text(breedList![index].name),
-                          Text(
-                              "${examinationList![index].name[0].toUpperCase()}${examinationList![index].name.substring(1).toLowerCase()}"),
-                        ],
-                      );
-                    },
-                    itemCount: examinationList!.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, childAspectRatio: 4),
-                  )
+                            const SizedBox(width: 10),
+                            Flexible(child: Text(displayName)),
+                          ],
+                        );
+                      },
+                      itemCount: exams.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, childAspectRatio: 4),
+                    );
+                  })
                 : const SizedBox(),
           const SizedBox(
             height: 10,
@@ -788,58 +788,56 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
             ),
           if (fatherHealth == 1)
             showExaminationData
-                ? GridView.builder(
-                    physics: const ScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              String id = examinationList![index].id.toString();
-                              if (fatherExaminations.contains(id)) {
+                ? Builder(builder: (context) {
+                    final exams = examinationList ?? const <ExaminationModel>[];
+                    return GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (BuildContext context, int index) {
+                        final exam = exams[index];
+                        final examId = exam.id.toString();
+                        final name = exam.name;
+                        final displayName = name.isNotEmpty
+                            ? "${name[0].toUpperCase()}${name.substring(1).toLowerCase()}"
+                            : "";
+                        final selected = fatherExaminations.contains(examId);
+                        return Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
                                 setState(() {
-                                  fatherExaminations.remove(id);
+                                  if (selected) {
+                                    fatherExaminations.remove(examId);
+                                  } else {
+                                    fatherExaminations.add(examId);
+                                  }
                                 });
-                              } else {
-                                setState(() {
-                                  fatherExaminations.add(id);
-                                });
-                              }
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(6)),
-                                border: Border.all(
-                                    width: 2,
-                                    color: ColorValues.lightGreyColor),
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(6)),
+                                  border: Border.all(
+                                      width: 2,
+                                      color: ColorValues.lightGreyColor),
+                                ),
+                                child: selected
+                                    ? CustomWidgets.checkedBox()
+                                    : CustomWidgets.unCheckedBox(),
                               ),
-                              child: fatherExaminations.contains(
-                                          examinationList![index]
-                                              .id
-                                              .toString()) ==
-                                      true
-                                  ? CustomWidgets.checkedBox()
-                                  : CustomWidgets.unCheckedBox(),
                             ),
-                          ),
-
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          // Text(breedList![index].name),
-                          Text(
-                              "${examinationList![index].name[0].toUpperCase()}${examinationList![index].name.substring(1).toLowerCase()}"),
-                        ],
-                      );
-                    },
-                    itemCount: examinationList!.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, childAspectRatio: 4),
-                  )
+                            const SizedBox(width: 10),
+                            Flexible(child: Text(displayName)),
+                          ],
+                        );
+                      },
+                      itemCount: exams.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, childAspectRatio: 4),
+                    );
+                  })
                 : const SizedBox(),
           const SizedBox(
             height: 10,
@@ -950,8 +948,8 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
                   buttonColor: ColorValues.greyButtonColor,
                   sizingInformation: sizingInformation),
               const Spacer(),
-              CustomWidgets.buttonWithoutFontFamily(
-                  text: "Save & C.",
+                CustomWidgets.buttonWithoutFontFamily(
+                  text: "Save & Continue",
                   width: 30,
                   onPressed: () {
                     breederServices
