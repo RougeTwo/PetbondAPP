@@ -121,6 +121,7 @@ class _CharityAdvertCreateState extends State<CharityAdvertCreate> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -199,7 +200,9 @@ class _CharityAdvertCreateState extends State<CharityAdvertCreate> {
   _bodyWidget({required SizingInformationModel sizingInformation}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 50),
-      child: Column(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
@@ -232,7 +235,8 @@ class _CharityAdvertCreateState extends State<CharityAdvertCreate> {
           // _listedPetsContainer(sizingInformation: sizingInformation)
         ],
       ),
-    );
+    ),
+  );
   }
 
   _formContainer({required SizingInformationModel sizingInformation}) {

@@ -131,6 +131,7 @@ class _CharityAccountSettingState extends State<CharityAccountSetting> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -207,7 +208,9 @@ class _CharityAccountSettingState extends State<CharityAccountSetting> {
       key: _formKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Column(
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -405,7 +408,8 @@ class _CharityAccountSettingState extends State<CharityAccountSetting> {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 
   _updateLocationButton(

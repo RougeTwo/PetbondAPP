@@ -118,6 +118,7 @@ class _CreateDraftAdvertState extends State<CreateDraftAdvert> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -183,10 +184,13 @@ class _CreateDraftAdvertState extends State<CreateDraftAdvert> {
               //   );
               // }),
               dashBoardTitle: "VETERINARIAN DASHBOARD",
-              // ignore: unnecessary_null_comparison
-              widget: Padding(
+                // ignore: unnecessary_null_comparison
+                widget: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
+                  child: SingleChildScrollView(
+                  keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,15 +313,16 @@ class _CreateDraftAdvertState extends State<CreateDraftAdvert> {
                       const SizedBox(
                         height: 20,
                       ),
-                      puppies.isEmpty
+                        puppies.isEmpty
                           ? const SizedBox()
                           : ListView.builder(
-                              shrinkWrap: true,
-                              physics: const ScrollPhysics(),
-                              // addAutomaticKeepAlives: true,
-                              itemCount: puppies.length,
-                              itemBuilder: (_, i) => puppies[i],
-                            ),
+                            shrinkWrap: true,
+                            physics:
+                              const NeverScrollableScrollPhysics(),
+                            // addAutomaticKeepAlives: true,
+                            itemCount: puppies.length,
+                            itemBuilder: (_, i) => puppies[i],
+                          ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -332,6 +337,7 @@ class _CreateDraftAdvertState extends State<CreateDraftAdvert> {
                           sizingInformation: sizingInformation)
                     ],
                   )),
+                ),
               sizingInformation: sizingInformation,
             ));
       },
