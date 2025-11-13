@@ -79,28 +79,26 @@ class GetEditAdvertModel {
 }
 
 class TestResportDetail {
-  final List father_reports;
-  final List mother_reports;
+  final List<String>? father_reports;
+  final List<String>? mother_reports;
 
-  TestResportDetail({
-    required this.father_reports,
-    required this.mother_reports,
+  const TestResportDetail({
+    this.father_reports,
+    this.mother_reports,
   });
 
   factory TestResportDetail.fromJson(Map<String, dynamic> json) {
+    final rawFather = (json['father_reports'] as List?) ?? const [];
+    final rawMother = (json['mother_reports'] as List?) ?? const [];
     return TestResportDetail(
-      father_reports: json.containsKey('father_reports') &&
-              json['father_reports'].length > 0
-          ? json['father_reports']
-              .map((imagePath) => BaseUrl.getImageBaseUrl() + imagePath)
-              .toList()
-          : [],
-      mother_reports: json.containsKey('mother_reports') &&
-              json['mother_reports'].length > 0
-          ? json['mother_reports']
-              .map((imagePath) => BaseUrl.getImageBaseUrl() + imagePath)
-              .toList()
-          : [],
+      father_reports: rawFather
+          .map((imagePath) => BaseUrl.getImageBaseUrl() + imagePath.toString())
+          .cast<String>()
+          .toList(),
+      mother_reports: rawMother
+          .map((imagePath) => BaseUrl.getImageBaseUrl() + imagePath.toString())
+          .cast<String>()
+          .toList(),
     );
   }
 }

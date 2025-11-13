@@ -109,21 +109,22 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
   }
 
   _assignFirstStepValues() {
-    if (viewModel!.detail != null) {
-      if (viewModel!.detail!.reg_number != null) {
+    final detail = viewModel?.detail;
+    if (detail != null) {
+      if (detail.reg_number != null) {
         setState(() {
           _valRegistration = 1;
         });
-        registrationController.text = viewModel!.detail!.reg_number!;
+        registrationController.text = detail.reg_number!;
       }
-      if (viewModel!.detail!.kenney_club != null) {
+      if (detail.kenney_club != null) {
         setState(() {
           _valKennyClub = 1;
         });
-        kennyClubController.text = viewModel!.detail!.kenney_club!;
+        kennyClubController.text = detail.kenney_club!;
       }
-      if (viewModel!.detail!.bio != null) {
-        bioController.text = viewModel!.detail!.bio!;
+      if (detail.bio != null) {
+        bioController.text = detail.bio!;
       }
     }
   }
@@ -210,43 +211,51 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
     if (getEditAdvertModel.breed_id != null) {
       sharedServices.getBreedList(context: context).then((value) {
         breedList = value;
-
-        breeIdController.text = breedList
-            .where((element) => element.id == getEditAdvertModel.breed_id)
-            .first
-            .name;
+        final match = breedList.firstWhere(
+          (element) => element.id == getEditAdvertModel.breed_id,
+          orElse: () => BreedListModel(id: 0, name: ""),
+        );
+        breeIdController.text = match.name;
       });
     }
-    if (getEditAdvertModel.mother_advert_examinations!.isNotEmpty ||
-        (getEditAdvertModel.test_report_detail != null &&
-            getEditAdvertModel
-                .test_report_detail!.mother_reports.isNotEmpty)) {
+
+    final motherReports =
+        getEditAdvertModel.test_report_detail?.mother_reports ?? const [];
+    final fatherReports =
+        getEditAdvertModel.test_report_detail?.father_reports ?? const [];
+    final motherExamList =
+        getEditAdvertModel.mother_advert_examinations ?? const [];
+    final fatherExamList =
+        getEditAdvertModel.father_advert_examinations ?? const [];
+
+    if (motherExamList.isNotEmpty || motherReports.isNotEmpty) {
       setState(() {
         motherHealth = 1;
       });
     }
-    if (getEditAdvertModel.father_advert_examinations!.isNotEmpty ||
-        (getEditAdvertModel.test_report_detail != null &&
-            getEditAdvertModel
-                .test_report_detail!.father_reports.isNotEmpty)) {
+    if (fatherExamList.isNotEmpty || fatherReports.isNotEmpty) {
       setState(() {
         fatherHealth = 1;
       });
     }
 
     if (getEditAdvertModel.mother_advert_examinations != null) {
-      List<String> temp = List.empty(growable: true);
+      final temp = <String>[];
       getEditAdvertModel.mother_advert_examinations?.forEach((element) {
-        temp.add(element.examination_id.toString());
+        if (element.examination_id != null) {
+          temp.add(element.examination_id.toString());
+        }
       });
       setState(() {
         motherExaminations = temp;
       });
     }
     if (getEditAdvertModel.father_advert_examinations != null) {
-      List<String> temp2 = List.empty(growable: true);
+      final temp2 = <String>[];
       getEditAdvertModel.father_advert_examinations?.forEach((element) {
-        temp2.add(element.examination_id.toString());
+        if (element.examination_id != null) {
+          temp2.add(element.examination_id.toString());
+        }
       });
       setState(() {
         fatherExaminations = temp2;
@@ -259,6 +268,7 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -326,23 +336,27 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
               // }),
               showCardWidget: true,
               widget: viewModelLoading
-                  ? Column(
-                      children: [
-                        _introductionSection(
-                            sizingInformation: sizingInformation),
-                        const SizedBox(
-                          height: 20,
+                  ? SafeArea(
+                      child: SingleChildScrollView(
+                        keyboardDismissBehavior:
+                            ScrollViewKeyboardDismissBehavior.onDrag,
+                        child: Column(
+                          children: [
+                            _introductionSection(
+                                sizingInformation: sizingInformation),
+                            const SizedBox(height: 20),
+                            _firstStepUpdate(
+                                sizingInformation: sizingInformation),
+                            const SizedBox(height: 20),
+                            _secondStepUpdate(
+                                sizingInformation: sizingInformation),
+                            const SizedBox(height: 20),
+                            _thirdStepUpdate(
+                                sizingInformation: sizingInformation),
+                            const SizedBox(height: 24),
+                          ],
                         ),
-                        _firstStepUpdate(sizingInformation: sizingInformation),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        _secondStepUpdate(sizingInformation: sizingInformation),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        _thirdStepUpdate(sizingInformation: sizingInformation)
-                      ],
+                      ),
                     )
                   : _loadingSection(sizingInformation: sizingInformation),
               sizingInformation: sizingInformation,
@@ -651,12 +665,12 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
                 });
               },
               onNoTap: () {
-                if (getEditAdvertModel.test_report_detail != null) {
-                  for (var i in getEditAdvertModel
-                      .test_report_detail!.mother_reports) {
-                    var arr = i.split(BaseUrl.getImageBaseUrl());
-                    deleteMotherImages.add(arr[1]);
-                  }
+                final motherReports =
+                    getEditAdvertModel.test_report_detail?.mother_reports ??
+                        const [];
+                for (final i in motherReports) {
+                  final arr = i.split(BaseUrl.getImageBaseUrl());
+                  if (arr.length > 1) deleteMotherImages.add(arr[1]);
                 }
                 setState(() {
                   motherHealth = 2;
@@ -745,12 +759,12 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
                 });
               },
               onNoTap: () {
-                if (getEditAdvertModel.test_report_detail != null) {
-                  for (var i in getEditAdvertModel
-                      .test_report_detail!.father_reports) {
-                    var arr = i.split(BaseUrl.getImageBaseUrl());
-                    deleteFatherImages.add(arr[1]);
-                  }
+                final fatherReports =
+                    getEditAdvertModel.test_report_detail?.father_reports ??
+                        const [];
+                for (final i in fatherReports) {
+                  final arr = i.split(BaseUrl.getImageBaseUrl());
+                  if (arr.length > 1) deleteFatherImages.add(arr[1]);
                 }
 
                 setState(() {
@@ -1143,6 +1157,8 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
 
   //================mother image section=========================
   _motherReportWidget({required SizingInformationModel sizingInformation}) {
+    final motherReports =
+        getEditAdvertModel.test_report_detail?.mother_reports ?? const <String>[];
     return Column(
       children: [
         const SizedBox(
@@ -1183,18 +1199,14 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
           ),
         if (_motherReportsList.isNotEmpty ||
             (getEditAdvertModel.test_report_detail != null))
-          if ((_motherReportsList.isNotEmpty ||
-                  getEditAdvertModel
-                      .test_report_detail!.mother_reports.isNotEmpty) &&
+          if ((_motherReportsList.isNotEmpty || motherReports.isNotEmpty) &&
               motherReportImage == null)
             SizedBox(
               height: sizingInformation.safeBlockHorizontal * 7,
             ),
         if (_motherReportsList.isNotEmpty ||
             (getEditAdvertModel.test_report_detail != null))
-          if ((_motherReportsList.isNotEmpty ||
-                  getEditAdvertModel
-                      .test_report_detail!.mother_reports.isNotEmpty) &&
+          if ((_motherReportsList.isNotEmpty || motherReports.isNotEmpty) &&
               motherReportImage == null)
             Scrollbar(
               controller: scrollController,
@@ -1212,8 +1224,7 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
                           image: image,
                           isNetworkImage: false),
                     if (getEditAdvertModel.test_report_detail != null)
-                      for (String imageUrl in getEditAdvertModel
-                          .test_report_detail!.mother_reports)
+                      for (final imageUrl in motherReports)
                         _buildMotherImageBox(
                             sizingInformation: sizingInformation,
                             image: imageUrl,
@@ -1314,17 +1325,20 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                isNetworkImage
-                    ? getEditAdvertModel.test_report_detail!.mother_reports
-                        .remove(image)
-                    : _motherReportsList.remove(image);
+                if (isNetworkImage) {
+                  getEditAdvertModel
+                      .test_report_detail?.mother_reports
+                      ?.remove(image);
+                } else {
+                  _motherReportsList.remove(image);
+                }
               });
               if (isNetworkImage == true) {
                 String str = image.toString();
 
                 //split string
                 var arr = str.split(BaseUrl.getImageBaseUrl());
-                deleteMotherImages.add(arr[1]);
+                if (arr.length > 1) deleteMotherImages.add(arr[1]);
               }
             },
             child: Icon(
@@ -1340,6 +1354,8 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
 
   //================Father image section===============
   _fatherReportWidget({required SizingInformationModel sizingInformation}) {
+    final fatherReports =
+        getEditAdvertModel.test_report_detail?.father_reports ?? const <String>[];
     return Column(
       children: [
         const SizedBox(
@@ -1380,18 +1396,14 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
           ),
         if (_fatherReportsList.isNotEmpty ||
             (getEditAdvertModel.test_report_detail != null))
-          if ((_fatherReportsList.isNotEmpty ||
-                  getEditAdvertModel
-                      .test_report_detail!.father_reports.isNotEmpty) &&
+          if ((_fatherReportsList.isNotEmpty || fatherReports.isNotEmpty) &&
               fatherReportImage == null)
             SizedBox(
               height: sizingInformation.safeBlockHorizontal * 7,
             ),
         if (_fatherReportsList.isNotEmpty ||
             (getEditAdvertModel.test_report_detail != null))
-          if ((_fatherReportsList.isNotEmpty ||
-                  getEditAdvertModel
-                      .test_report_detail!.father_reports.isNotEmpty) &&
+          if ((_fatherReportsList.isNotEmpty || fatherReports.isNotEmpty) &&
               fatherReportImage == null)
             Scrollbar(
               controller: scrollController,
@@ -1409,8 +1421,7 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
                           image: image,
                           isNetworkImage: false),
                     if (getEditAdvertModel.test_report_detail != null)
-                      for (String imageUrl in getEditAdvertModel
-                          .test_report_detail!.father_reports)
+                      for (final imageUrl in fatherReports)
                         _buildFatherImageBox(
                             sizingInformation: sizingInformation,
                             image: imageUrl,
@@ -1511,15 +1522,18 @@ class _AdvertisePetStepTwoUpdateState extends State<AdvertisePetStepTwoUpdate> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                isNetworkImage
-                    ? getEditAdvertModel.test_report_detail!.father_reports
-                        .remove(image)
-                    : _fatherReportsList.remove(image);
+                if (isNetworkImage) {
+                  getEditAdvertModel
+                      .test_report_detail?.father_reports
+                      ?.remove(image);
+                } else {
+                  _fatherReportsList.remove(image);
+                }
               });
               if (isNetworkImage == true) {
                 String str = image.toString();
                 var arr = str.split(BaseUrl.getImageBaseUrl());
-                deleteFatherImages.add(arr[1]);
+                if (arr.length > 1) deleteFatherImages.add(arr[1]);
               }
             },
             child: Icon(
