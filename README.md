@@ -48,6 +48,19 @@ flutter run `
 Pop-Location
 ```
 
+### Google Maps on Web (optional)
+
+If you target Flutter Web, provide a valid Maps JavaScript API key. The `google_maps_flutter` web implementation reads `GOOGLE_MAPS_API_KEY` from `--dart-define` at runtime. No UI changes are needed.
+
+Example:
+
+```powershell
+flutter run -d chrome `
+	--dart-define=GOOGLE_MAPS_API_KEY=your_web_maps_key
+```
+
+If you see errors like `Cannot read properties of undefined (reading 'maps')`, ensure the key is valid, has the Maps JavaScript API enabled in Google Cloud Console, and is passed via `--dart-define`.
+
 To set a custom Android package ID for builds:
 
 ```powershell
