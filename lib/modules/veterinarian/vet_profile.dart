@@ -120,6 +120,7 @@ class _VetProfileState extends State<VetProfile> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -199,7 +200,9 @@ class _VetProfileState extends State<VetProfile> {
   _formWidget({required SizingInformationModel sizingInformation}) {
     return Form(
       key: _formKey,
-      child: Column(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -437,7 +440,7 @@ class _VetProfileState extends State<VetProfile> {
           )
         ],
       ),
-    );
+    ));
   }
 
   _firstNameTextField({required SizingInformationModel sizingInformation}) {

@@ -55,6 +55,7 @@ class _VetSettingsState extends State<VetSettings> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -132,7 +133,9 @@ class _VetSettingsState extends State<VetSettings> {
   }
 
   _body({required SizingInformationModel sizingInformation}) {
-    return Column(
+    return SingleChildScrollView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
@@ -148,7 +151,7 @@ class _VetSettingsState extends State<VetSettings> {
         ),
         _staffContainer(sizingInformation: sizingInformation)
       ],
-    );
+    ));
   }
 
   _staffContainer({required SizingInformationModel sizingInformation}) {
@@ -173,8 +176,8 @@ class _VetSettingsState extends State<VetSettings> {
               } else {
                 vetStaffList = snapshot.data as List<SearchResultModel>;
                 return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Column(

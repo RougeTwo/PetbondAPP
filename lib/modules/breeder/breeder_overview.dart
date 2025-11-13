@@ -66,8 +66,10 @@ class _BreederOverviewState extends State<BreederOverview> {
     breederServices.context = context;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-      child: viewModelLoading
-          ? Column(
+        child: viewModelLoading
+          ? SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomWidgets.buttonWithoutFontFamily(
@@ -115,7 +117,7 @@ class _BreederOverviewState extends State<BreederOverview> {
                 ),
                 _bodyWidget(sizingInformation: widget.sizingInformation)
               ],
-            )
+            ))
           : CustomWidgets.box(sizingInformation: widget.sizingInformation),
     );
   }
@@ -338,9 +340,9 @@ class _BreederOverviewState extends State<BreederOverview> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         viewRecentListLoading
-            ? ListView.builder(
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
+          ? ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
                 itemCount: recentList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return CustomPetsContainer(
