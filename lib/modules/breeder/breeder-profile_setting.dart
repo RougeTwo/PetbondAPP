@@ -86,6 +86,7 @@ class _BreederProfileSettingState extends State<BreederProfileSetting> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -164,7 +165,9 @@ class _BreederProfileSettingState extends State<BreederProfileSetting> {
   _body({required SizingInformationModel sizingInformation}) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        child: Column(
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomWidgets.cardTitle(title: "Profile Information"),
@@ -183,7 +186,8 @@ class _BreederProfileSettingState extends State<BreederProfileSetting> {
                 ? loaded(sizingInformation: sizingInformation)
                 : CustomWidgets.box(sizingInformation: sizingInformation),
           ],
-        ));
+        )),
+      );
   }
 
   loaded({required SizingInformationModel sizingInformation}) {
@@ -477,7 +481,7 @@ class _BreederProfileSettingState extends State<BreederProfileSetting> {
                       ),
                       ListView.builder(
                           shrinkWrap: true,
-                          physics: const ScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(

@@ -54,6 +54,7 @@ class _VetConnectedBreedersState extends State<VetConnectedBreeders> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -130,7 +131,9 @@ class _VetConnectedBreedersState extends State<VetConnectedBreeders> {
   _body({required SizingInformationModel sizingInformation}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 40),
-      child: Column(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
@@ -284,7 +287,7 @@ class _VetConnectedBreedersState extends State<VetConnectedBreeders> {
                       snapshot.data as List<ConnectedBreederModel>;
                   return ListView.builder(
                       shrinkWrap: true,
-                      physics: const ScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: snapshot.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Column(
@@ -356,6 +359,7 @@ class _VetConnectedBreedersState extends State<VetConnectedBreeders> {
               }),
         ],
       ),
+    ),
     );
   }
 

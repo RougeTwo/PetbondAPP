@@ -74,6 +74,7 @@ class _EditVetStaffMainState extends State<EditVetStaffMain> {
     return BaseWidget(
       builder: (context, sizingInformation) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
             drawer: Theme(
                 data: Theme.of(context).copyWith(
                   canvasColor: ColorValues
@@ -153,7 +154,9 @@ class _EditVetStaffMainState extends State<EditVetStaffMain> {
   _formWidget({required SizingInformationModel sizingInformation}) {
     return Form(
       key: _formKey,
-      child: Column(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
@@ -198,7 +201,7 @@ class _EditVetStaffMainState extends State<EditVetStaffMain> {
               width: sizingInformation.safeBlockHorizontal * 30,
               asset: AssetValues.saveIcon)
         ],
-      ),
+      )),
     );
   }
 
