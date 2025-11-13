@@ -259,41 +259,49 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   _searchMapTextField(sizingInformation: sizingInformation),
                   SizedBox(
                     height: 300,
-                    child: Stack(
-                      children: [
-                        Material(
-                            child: GoogleMap(
-                          mapType: MapType.normal,
-                          initialCameraPosition: CameraPosition(
-                            target: currentPosition,
-                            zoom: 14,
-                          ),
-                          onMapCreated: (GoogleMapController controller) => {
-                            setState(() {
-                              _googleMapController = controller;
-                              _mapController.complete(controller);
-                            })
-                          },
-                          onCameraMove: ((CameraPosition cp) async {
-                            currentPosition = cp.target;
-                          }),
-                          gestureRecognizers:
-                              <Factory<OneSequenceGestureRecognizer>>{
-                            Factory<OneSequenceGestureRecognizer>(
-                              () => EagerGestureRecognizer(),
+                    child: kIsWeb
+                        ? const Center(
+                            child: Text(
+                              'Map preview is not available on web.\nPlease continue by entering your address.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: ColorValues.fontColor),
                             ),
-                          },
-                          cameraTargetBounds: CameraTargetBounds.unbounded,
-                        )),
-                        const Center(
-                          child: Icon(
-                            Icons.location_on,
-                            color: Colors.red,
-                            size: 40,
+                          )
+                        : Stack(
+                            children: [
+                              Material(
+                                  child: GoogleMap(
+                                mapType: MapType.normal,
+                                initialCameraPosition: CameraPosition(
+                                  target: currentPosition,
+                                  zoom: 14,
+                                ),
+                                onMapCreated: (GoogleMapController controller) => {
+                                  setState(() {
+                                    _googleMapController = controller;
+                                    _mapController.complete(controller);
+                                  })
+                                },
+                                onCameraMove: ((CameraPosition cp) async {
+                                  currentPosition = cp.target;
+                                }),
+                                gestureRecognizers:
+                                    <Factory<OneSequenceGestureRecognizer>>{
+                                  Factory<OneSequenceGestureRecognizer>(
+                                    () => EagerGestureRecognizer(),
+                                  ),
+                                },
+                                cameraTargetBounds: CameraTargetBounds.unbounded,
+                              )),
+                              const Center(
+                                child: Icon(
+                                  Icons.location_on,
+                                  color: Colors.red,
+                                  size: 40,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
                   ),
                 ],
               ),
@@ -506,6 +514,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         validator: Validator.validatePostCode,
         textController: postCodeController,
         onFieldSubmitted: (_) async {
+          if (kIsWeb) return; // Skip geocoding on web
           List<Location> locations =
               await locationFromAddress(postCodeController.text);
           Location location = locations.first;
@@ -513,12 +522,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             currentPosition = LatLng(location.latitude, location.longitude);
             if (_googleMapController != null) {
               _googleMapController!.moveCamera(CameraUpdate.newCameraPosition(
-                  CameraPosition(target: currentPosition, zoom: 14)
-                  //17 is new zoom level
-                  ));
+                  CameraPosition(target: currentPosition, zoom: 14)));
             }
           });
-                },
+        },
         sizingInformation: sizingInformation);
   }
 
@@ -562,17 +569,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
         hintText: "5 Sutherland Avenue, London, UK",
         labelText: "Search map for location",
         onFieldSubmitted: (_) async {
+          if (kIsWeb) return; // Skip geocoding on web
           List<Location> locations =
               await locationFromAddress(searchMapController.text);
           Location location = locations.first;
           setState(() {
             currentPosition = LatLng(location.latitude, location.longitude);
-            _googleMapController!.moveCamera(CameraUpdate.newCameraPosition(
-                CameraPosition(target: currentPosition, zoom: 14)
-                //17 is new zoom level
-                ));
+            _googleMapController!.moveCamera(
+                CameraUpdate.newCameraPosition(
+                    CameraPosition(target: currentPosition, zoom: 14)));
           });
-                },
+        },
         textController: searchMapController,
         sizingInformation: sizingInformation);
   }

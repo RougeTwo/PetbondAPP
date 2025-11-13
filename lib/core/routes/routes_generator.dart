@@ -4,7 +4,8 @@ import 'package:petbond_uk/modules/auth/signup/sign_up.dart';
 import 'package:petbond_uk/modules/auth/signup/signup_selection_screen.dart';
 import 'package:petbond_uk/modules/breeder/breeder_dashboard.dart';
 import 'package:petbond_uk/modules/charity/charity_dashboard.dart';
-import 'package:petbond_uk/modules/qr_scanner/qr_scanner_screen.dart';
+import 'package:petbond_uk/modules/qr_scanner/qr_scanner_screen_web.dart'
+  if (dart.library.io) 'package:petbond_uk/modules/qr_scanner/qr_scanner_screen.dart';
 import 'package:petbond_uk/modules/splash/splash_screen.dart';
 import 'package:petbond_uk/modules/auth/login.dart';
 import 'package:petbond_uk/modules/veterinarian/vet_dashboard.dart';

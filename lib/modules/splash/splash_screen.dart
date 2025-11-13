@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:petbond_uk/core/routes/routes.dart';
@@ -104,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BaseWidget(
       builder: (context, sizingInformation) {
-        if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
+        if (kIsWeb || (defaultTargetPlatform != TargetPlatform.android && defaultTargetPlatform != TargetPlatform.iOS)) {
           return const Text(
             "SVGator's Flutter animations run only on Android or iOS",
             textAlign: TextAlign.center,

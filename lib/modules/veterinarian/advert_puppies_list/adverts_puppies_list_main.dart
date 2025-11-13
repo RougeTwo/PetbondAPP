@@ -8,7 +8,9 @@ import 'package:petbond_uk/core/widgets/base_widget.dart';
 import 'package:petbond_uk/core/widgets/custom_widgets.dart';
 import 'package:petbond_uk/core/widgets/drawer_buttons.dart' as custom;
 import 'package:petbond_uk/models/veterinarian/advert_puppies_model/advert_puppies_model.dart';
-import 'package:petbond_uk/modules/veterinarian/edit_advert_puppies/edit_advert_puppies_main.dart';
+import 'package:petbond_uk/modules/veterinarian/edit_advert_puppies/edit_advert_puppies_main_web.dart'
+    if (dart.library.io)
+      'package:petbond_uk/modules/veterinarian/edit_advert_puppies/edit_advert_puppies_main.dart';
 import 'package:petbond_uk/modules/veterinarian/vet_breeder_register.dart';
 import 'package:petbond_uk/modules/veterinarian/vet_connected_breeder.dart';
 import 'package:petbond_uk/modules/veterinarian/vet_profile.dart';
