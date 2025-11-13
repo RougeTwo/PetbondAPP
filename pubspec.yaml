@@ -49,3 +49,7 @@ flutter:
 # Enable web
 flutter:
   uses-material-design: true
+
+# Enable web
+flutter:
+  uses-material-design: true
