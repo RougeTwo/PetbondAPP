@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class MessageModel {
   final int id;
   final String advertName;

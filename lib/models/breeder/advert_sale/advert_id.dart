@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class AdvertIdModel {
   final int? advert_id;
 

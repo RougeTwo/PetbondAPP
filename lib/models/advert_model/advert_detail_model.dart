@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'advert__detail_view_pet_model.dart';
 
 class AdvertDetailViewModel {

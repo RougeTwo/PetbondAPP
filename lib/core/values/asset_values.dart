@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class AssetValues {
   //svg
   static const profileIcon = 'assets/profile_icon.svg';

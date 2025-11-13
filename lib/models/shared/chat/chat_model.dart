@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class ChatModel {
   final int chatId;
   final int advertId;

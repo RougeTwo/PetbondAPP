@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class ViewDetailModel {
   final String? proof_of_address;
   final String? local_council;

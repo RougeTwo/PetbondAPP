@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class ChatMessageModel {
   int id;
   String message;

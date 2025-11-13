@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class VetViewDetailModel {
   final String? rcvs_number;
   final String? practice_name;

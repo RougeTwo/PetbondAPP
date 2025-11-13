@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class AppConfig {
   // API endpoints
   static const String apiBaseUrl = String.fromEnvironment(

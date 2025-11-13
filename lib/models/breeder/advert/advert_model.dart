@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:petbond_uk/models/breeder/advert/pet.dart';
 
 class AdvertModel {

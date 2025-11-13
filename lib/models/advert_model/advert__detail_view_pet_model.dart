@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class AdvertDetailViewPetModel {
   int? pet_id;
   String? name;

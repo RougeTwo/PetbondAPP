@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:petbond_uk/models/veterinarian/vet_view_detail_model.dart';
 
 class VetViewModel {

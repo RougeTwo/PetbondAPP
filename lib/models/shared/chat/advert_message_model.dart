@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:petbond_uk/models/shared/chat/chat_model.dart';
 
 class AdvertMessageModel {

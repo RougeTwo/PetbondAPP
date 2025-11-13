@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import '../../breeder/advert/advert_model.dart';
 import '../user_model.dart';
 import 'chat_message_model.dart';

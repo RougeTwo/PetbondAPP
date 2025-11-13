@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 const String splashScreen = '/splash_screen';
 const String loginScreen = '/login_screen';
 const String signUpScreen = '/signup_screen';

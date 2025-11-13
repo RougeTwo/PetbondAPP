@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class CharityViewDetailModel {
   final String? charity_number;
   final String? charity_name;

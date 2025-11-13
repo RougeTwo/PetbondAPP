@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class SaleAdvertsModel {
   final String? advert_name;
   final String? mother_name;

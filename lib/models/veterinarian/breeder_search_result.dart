@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class SearchResultModel {
   final int? id;
   final String? first_name;

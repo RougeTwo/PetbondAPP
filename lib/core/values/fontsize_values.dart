@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 class FontSizeValues {
   late final double _safeBlockHorizontal;
   late double sixty;
