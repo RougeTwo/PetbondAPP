@@ -1,0 +1,28 @@
+  $import = "import 'package:petbond_uk/core/widgets/drawer_buttons.dart' as custom;"
+    
+    # Find all Dart files that reference DrawerButton (regardless of alias)
+    $files = Select-String -Path "lib/**/*.dart" -Pattern 'DrawerButton' |
+    Select-Object -ExpandProperty Path -Unique
+    
+    foreach ($f in $files) {
+    $content = Get-Content $f -Raw
+    
+    # Remove the wrong Material import if present
+    $content = $content -replace "import\s+'package:flutter/src/material/action_buttons\.dart'\s*;\s*", ""
+    
+    # Replace any existing non-aliased import with the aliased import
+    $content = $content -replace "import\s+'package:petbond_uk/core/widgets/drawer_buttons\.dart'\s*;", $import
+    
+    # If the aliased import is not present, prepend it
+    if ($content -notmatch [regex]::Escape($import)) {
+    $content = $import + "`r`n" + $content
+    }
+    
+    # Replace all DrawerButton(...) with custom.DrawerButton(...)
+    $content = $content -replace '\bDrawerButton\(', 'custom.DrawerButton('
+    
+    Set-Content $f $content -NoNewline
+  Write-Host "✅ Updated: $f"
+  }
+
+    Write-Host "`n🎉 All DrawerButton imports fixed."

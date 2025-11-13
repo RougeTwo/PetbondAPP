@@ -1,0 +1,47 @@
+name: petbond_uk
+description: A new Flutter project.
+publish_to: "none"
+version: 2.0.0+1
+
+environment:
+  sdk: ">=3.8.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.5
+  pusher_channels_flutter: ^2.1.2
+  http: ^0.13.5
+  string_validator: ^0.3.0
+  path: ^1.9.1
+  async: ^2.10.0
+  flutter_svg: ^1.1.5
+  webview_flutter: ^3.0.4
+  country_picker: ^2.0.16
+  dotted_border: ^2.0.0+2
+  image_picker: ^0.8.5+3
+  flutter_secure_storage: ^5.1.2
+  flutter_overlay_loader: ^1.0.8
+  flutter_easyloading: ^3.0.5
+  url_launcher: ^6.1.5
+  google_maps_flutter: ^2.3.0
+  geocoding: ^2.0.5
+  qr_code_scanner: ^0.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/appbar_background.png
+  fonts:
+    - family: FredokaOne
+      fonts:
+        - asset: fonts/FredokaOne-Regular.ttf
+    - family: NotoSans
+      fonts:
+        - asset: fonts/NotoSans-Regular.ttf

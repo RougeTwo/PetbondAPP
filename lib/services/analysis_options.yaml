@@ -1,0 +1,6 @@
+# Local analyzer options for service layer only.
+# Rationale: Service classes often use snake_case keys to mirror backend APIs.
+# Disable the naming rule here to avoid noisy lints while retaining global strictness.
+linter:
+  rules:
+    non_constant_identifier_names: false

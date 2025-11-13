@@ -1,0 +1,6 @@
+# Local analyzer options for model classes only.
+# Rationale: These files mirror backend JSON snake_case fields.
+# Disabling the rule here avoids widespread renaming or per-file ignores.
+linter:
+  rules:
+    non_constant_identifier_names: false

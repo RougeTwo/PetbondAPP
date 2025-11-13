@@ -1,0 +1,91 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+def appId = project.hasProperty('APP_ID') ? project.property('APP_ID') : "com.example.petbond_uk"
+
+// Load keystore properties from a non-committed file or environment variables
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace appId
+    compileSdk 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId appId
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion 33
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    signingConfigs {
+        release {
+            def storeFilePath = keystoreProperties['storeFile'] ?: System.getenv('MYAPP_RELEASE_STORE_FILE')
+            def storePassword = keystoreProperties['storePassword'] ?: System.getenv('MYAPP_RELEASE_STORE_PASSWORD')
+            def keyAlias = keystoreProperties['keyAlias'] ?: System.getenv('MYAPP_RELEASE_KEY_ALIAS')
+            def keyPassword = keystoreProperties['keyPassword'] ?: System.getenv('MYAPP_RELEASE_KEY_PASSWORD')
+
+            if (storeFilePath && storePassword && keyAlias && keyPassword) {
+                storeFile file(storeFilePath)
+                storePassword storePassword
+                keyAlias keyAlias
+                keyPassword keyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            // Use release signing only when fully configured
+            if (signingConfigs.release.storeFile != null) {
+                signingConfig signingConfigs.release
+            } else {
+                signingConfig signingConfigs.debug
+            }
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+// No explicit Kotlin stdlib dependency needed; managed by the Kotlin Gradle plugin.
